@@ -2,7 +2,7 @@ import React from 'react';
 import {getWorkSpaces,reset,changeAvailability} from "./../../actions/homeActions";
 import {connect} from "react-redux";
 import {Tabs, Tab} from 'material-ui/Tabs';
-import WorkSpaceList from './../../components/workSpaceList/workSpaceList'
+import EmployeeList from './../../components/employeeList/employeeList'
 import UltimatePaginationMaterialUi from '../../components/Table';
 
 class App extends React.Component{
@@ -49,7 +49,7 @@ class App extends React.Component{
 
 		return (
       <div>
-        <WorkSpaceList list={this.state.list} getMoreData={this.getMoreData} changeAvailability={this.changeAvailability} loading={this.props.home.loading}/>
+        <EmployeeList list={this.state.list} getMoreData={this.getMoreData} changeAvailability={this.changeAvailability} loading={this.props.home.loading}/>
 				<center>
 					<UltimatePaginationMaterialUi
 						currentPage={this.state.page}

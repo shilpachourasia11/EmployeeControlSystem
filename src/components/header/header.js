@@ -10,8 +10,7 @@ class Header extends React.Component {
      return (
       <div>
         <AppBar
-          title="Manage Work Spaces"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          title="Manage Your Employees"
         />
       </div>
       );

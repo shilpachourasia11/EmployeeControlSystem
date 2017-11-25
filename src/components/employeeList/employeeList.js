@@ -13,7 +13,7 @@ import Toggle from 'material-ui/Toggle';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 
-class WorkSpaceList extends React.Component {
+class EmployeeList extends React.Component {
   constructor(props) {
 		super(props);
     this.state = {
@@ -70,10 +70,10 @@ class WorkSpaceList extends React.Component {
         <Table onRowSelection={this.handleRowSelection}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
-              <TableHeaderColumn>Workspace Name</TableHeaderColumn>
-              <TableHeaderColumn>Capacity</TableHeaderColumn>
-              <TableHeaderColumn>Type</TableHeaderColumn>
-              <TableHeaderColumn>Availability</TableHeaderColumn>
+              <TableHeaderColumn>Name</TableHeaderColumn>
+              <TableHeaderColumn>Age</TableHeaderColumn>
+              <TableHeaderColumn>Salary</TableHeaderColumn>
+              <TableHeaderColumn>Job Status</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody deselectOnClickaway={false} displayRowCheckbox={false}>
@@ -123,4 +123,4 @@ class WorkSpaceList extends React.Component {
 }
 
 
-export default WorkSpaceList;
+export default EmployeeList;

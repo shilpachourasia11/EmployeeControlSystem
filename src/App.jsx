@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WorkSpaces from './container/home'
+import Home from './container/home'
 import Header from './components/header/header'
 var injectTapEventPlugin = require("react-tap-event-plugin");
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,10 +11,9 @@ class App extends Component {
     <MuiThemeProvider>
       <div>
         <Header/>
-        <WorkSpaces/>
+        <Home/>
       </div>
     </MuiThemeProvider>
-
     );
   }
 }
