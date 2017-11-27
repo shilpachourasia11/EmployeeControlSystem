@@ -1,8 +1,8 @@
 let express = require('express')
 let app = express()
-let db=require('./config/db')
+let db=require('./sqldb')
 let config = require('./config/environment');
-
+console.log(db.connection)
 require('./config/express')(app)
 require('./routes/route.js')(app)
 
@@ -12,12 +12,12 @@ function startServer() {
 	});
 }
 
-db.connection.sync({force: config.seedDb}).then(() => {
-	console.log("DB CREATED")
-	if( config.seedDb){
-		console.log("Seeding databse--------------------->");
- 		return require("./seed")();
-	}
+db.connection.sync().then(() => {
+	// if( config.seedDb){
+	// 	console.log("DB CREATED")
+	// 	console.log("Seeding databse--------------------->");
+ // 		return require("./seed")();
+	// }
 })
 .then(() => {
 	startServer()

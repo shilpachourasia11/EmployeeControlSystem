@@ -1,9 +1,9 @@
 var db=require('./../../sqldb')();
-var workSpace = require('./workSpace.model.js')();
+var employee = require('./employee.model.js')();
 
-var workSpaceHandler = {
-	getAllWorkspaces: (req, res)=>{
-		workSpace.getAllWorkspaces(db, req)
+var employeeHandler = {
+	getEmployee: (req, res)=>{
+		employee.getAllemployees(db, req)
 		.then((data) =>{
         res.status(200).send(data)
 		})
@@ -15,7 +15,7 @@ var workSpaceHandler = {
 	},
 	changeAvailability: (req, res) => {
 		if(req.body){
-			workSpace.changeAvailability(db, req)
+			employee.changeAvailability(db, req)
 			.then((data) =>{
 				res.status(200).send(req.body)
 			})
@@ -33,4 +33,4 @@ var workSpaceHandler = {
 	}
 }
 
-module.exports = workSpaceHandler;
+module.exports = employeeHandler;

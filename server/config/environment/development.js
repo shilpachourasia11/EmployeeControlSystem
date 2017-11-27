@@ -3,7 +3,7 @@
 // ==================================
 module.exports = {
   sequelize: {
-    uri: 'postgres://postgres:postgres@localhost:5432/Employee',
+    uri: 'postgres://postgres:postgres@localhost:5432/employee',
     options: {
       logging: false,
       dialect: 'postgres',
@@ -15,5 +15,6 @@ module.exports = {
     }
   },
   // Seed database on startup
- seedDb: false,
+ seedDb: true,
+
 };
