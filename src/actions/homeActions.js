@@ -1,10 +1,10 @@
 import * as types from './../constants'
 import home from './../apiCalls/home'
 
-export function getWorkSpaces(data) {
+export function getEmployee(data) {
   return {
-    type: types.ALL_WORKSPACES,
-    payload: home.getWorkSpaces(data)
+    type: types.ALL_EMPLOYEE,
+    payload: home.getEmployee(data)
       .then( response => {
         return response.data;
       } )
@@ -17,13 +17,12 @@ export function reset(){
   }
 }
 
-export function changeAvailability(value){
+export function getJobTypes(){
   return {
-    type: types.CHANGE_AVAILABILITY,
-    payload: home.changeAvailability(value)
+    type: types.GET_JOBS,
+    payload: home.getJobTypes()
       .then( response => {
         return response.data;
-      }),
-    value
+      })
   }
 }

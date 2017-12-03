@@ -1,24 +1,28 @@
 import * as types from './../constants'
 
 const homeReducer = ( state = {
-	allWorkspaces: [],
+	allEmployees: [],
+	allJobs: [],
 	dataReady: false,
-	totalWorkSpacePages: 1,
+	totalEmployeePages: 1,
 	error: false,
-	changeAvailability: false,
-	loading: false
+	loading: false,
+	jobDataReady: false
 } , action) => {
 	switch (action.type){
-		case types.ALL_WORKSPACES + "_FULFILLED":
-		let total = action.payload.count/10 + action.payload.count%10
+		case types.ALL_EMPLOYEE + "_FULFILLED":
+		let total = 1
+		if(action.payload.count>10){
+			total = action.payload.count/10 + action.payload.count%10
+		}
 			state = {
 				...state,
-				allWorkspaces: action.payload.rows,
+				allEmployees: action.payload.rows,
 				dataReady: true,
-				totalWorkSpacePages: total
+				totalEmployeePages: total
 			}
 			return state
-		case types.ALL_WORKSPACES + '_REJECTED':
+		case types.ALL_EMPLOYEE + '_REJECTED':
 		return state
 		case types.RESET:
 			return state ={
@@ -26,34 +30,13 @@ const homeReducer = ( state = {
 				dataReady: false,
 				error: false
 			}
-		case types.CHANGE_AVAILABILITY + '_FULFILLED':
-			let allData = state.allWorkspaces
-			let index
-			for(index = 0; index<allData.length; index++){
-				if(allData[index].work_space.id == action.payload.workSpaceId){
-					allData[index].work_space.availability = action.payload.value
-					break
-				}
-			}
-			return state = {
+		case types.GET_JOBS + "_FULFILLED":
+			state = {
 				...state,
-				changedAvailibility: true,
-				loading: false,
-				error: false,
-				allWorkspaces: allData
+				allJobs: action.payload.rows,
+				jobDataReady: true,
 			}
-		case types.CHANGE_AVAILABILITY + '_PENDING':
-			return state = {
-				...state,
-				loading: true
-			}
-		case types.CHANGE_AVAILABILITY + '_REJECTED':
-		return {
-			...state,
-			error: true,
-			changeAvailability: false,
-			loading: false
-		}
+			return state
 		default:
 			return state
 	}

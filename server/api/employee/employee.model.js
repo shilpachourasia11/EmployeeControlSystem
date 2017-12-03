@@ -27,42 +27,63 @@ let employee= connection.define('employee',{
       allowNull: false,
       defaultValue: true,
     },
-    // job_id: {
-    //   type: sequelize.INTEGER,
-    //
-    //   references: {
-    //     // This is a reference to another model
-    //     model: 'job',
-    //
-    //     // This is the column name of the referenced model
-    //     key: 'id',
-    //
-    //     // This declares when to check the foreign key constraint. PostgreSQL only.
-    //     deferrable: sequelize.Deferrable.INITIALLY_IMMEDIATE
-    //   }
-    // }
   }
 );
 
 employee.associate = function(db) {
-  db.employee.hasOne(db.job);
+  db.job.hasOne(db.employee);
 };
 
 employee.getAllemployees = function (db, req) {
-  //let offset = req.query.page*10
+  let offset = req.query.page*10
+  let jobType
+  let rangeStart
+  let rangeEnd
+  if(req.query.job_type){
+    jobType = req.query.job_type
+    return db.job.findAndCountAll({
+      attributes: ['type','id'],
+      where: {
+        status: true,
+        id: jobType
+      },
+      limit: 10,
+      offset: offset || 0,
+      include: [
+        {
+          model: db.employee,
+          where: {
+            status: true
+          },
+          attributes: ['salary', 'age', 'name'],
+          required: true
+        },
+      ]
+    })
+  }
+  // if(req.query.range){
+  //
+  // }
 
-  return db.employee.findAndCountAll({
-    attributes: ['salary', 'age', 'name'],
+  return db.job.findAndCountAll({
+    attributes: ['type','id'],
     where: {
-      status: true
+      status: true,
     },
     limit: 10,
-    offset: 0,
+    offset: offset || 0,
+    include: [
+      {
+        model: db.employee,
+        where: {
+          status: true
+        },
+        attributes: ['salary', 'age', 'name'],
+        required: true
+      },
+    ]
   })
-  // .then((data)=> {
-  //   let allEmployees = data
-  //
-  // })
+
 }
 
 // employee.changeAvailability = function(db, req) {

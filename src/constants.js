@@ -1,3 +1,3 @@
-export const ALL_WORKSPACES = 'ALL_WORKSPACES'
+export const ALL_EMPLOYEE = 'ALL_EMPLOYEE'
 export const RESET = 'RESET'
-export const CHANGE_AVAILABILITY = 'CHANGE_AVAILABILITY'
+export const GET_JOBS = 'GET_JOBS'

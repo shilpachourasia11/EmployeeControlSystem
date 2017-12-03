@@ -1,4 +1,4 @@
-var db=require('./../../sqldb')();
+var db=require('./../../sqldb');
 var employee = require('./employee.model.js')();
 
 var employeeHandler = {

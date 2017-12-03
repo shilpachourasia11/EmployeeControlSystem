@@ -1,6 +1,4 @@
 import React from 'react';
-//import TopBar from './../../components/login/TopBar.jsx';
-//import Login from './../../components/login/Login.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import {browserHistory} from 'react-router';

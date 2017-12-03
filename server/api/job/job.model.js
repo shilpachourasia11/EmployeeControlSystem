@@ -22,5 +22,14 @@ let job= connection.define('job',{
   }
 );
 
+job.getJobTypes = function(db, req) {
+  return db.job.findAndCountAll({
+    attributes: ['type','id'],
+    where: {
+      status: true,
+    }
+  })
+}
+
 return job
 };

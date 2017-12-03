@@ -6,14 +6,11 @@ let db ={};
 let format = path.join(__dirname ,'../api/{0}/{0}.model.js');
 
 for(let i in models){
-  console.log("hahahahha");
    let model = require(format.replace(/\{0\}/g,models[i]))();
-   console.log(model);
    db[model.name]=model;
 }
 Object.keys(db).forEach(function(modelName){
    if('associate' in db[modelName]){
-       console.log();
        db[modelName].associate(db);
    }
 });

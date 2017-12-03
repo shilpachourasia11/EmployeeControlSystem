@@ -4,7 +4,8 @@
   "description": "Simple and lightweight Boilerplate for ReactJS projects",
   "scripts": {
     "lint": "eslint src",
-    "start": "node server.js"
+    "start": "node server.js",
+    "inspect": "node --inspect server.js"
   },
   "repository": "https://github.com/shilpachourasia11/EmployeeControlSystem.git",
   "keywords": [
@@ -39,6 +40,7 @@
     "cls-bluebird": "^2.0.1",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "history": "^4.7.2",
     "import": "0.0.6",
     "jsonwebtoken": "^8.1.0",
     "material-ui": "^0.19.4",
@@ -48,15 +50,15 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
+    "react-router": "^3.0.2",
     "react-router-redux": "^4.0.8",
-    "react-tap-event-plugin": "^3.0.2",
+    "react-tap-event-plugin": "^2.0.1",
     "react-ultimate-pagination": "^1.0.2",
-    "redux": "^3.7.2",
+    "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^4.4.2",
     "redux-thunk": "^2.2.0",
-    "sequelize": "^4.22.5",
+    "sequelize": "^4.15.0",
     "validator": "^9.1.1"
   },
   "main": "server.js"

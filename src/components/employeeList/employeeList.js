@@ -29,27 +29,14 @@ class EmployeeList extends React.Component {
     this.props.list.map((data, index)=> {
       list.push(
         <TableRow>
-          <TableRowColumn>{data.work_space.name}</TableRowColumn>
-          <TableRowColumn>{data.work_space.capacity}</TableRowColumn>
-          <TableRowColumn>{data.work_space.type}</TableRowColumn>
-          <TableRowColumn>{data.work_space.availability == true ? "Available":"Booked"}</TableRowColumn>
+          <TableRowColumn>{data.employee.name}</TableRowColumn>
+          <TableRowColumn>{data.employee.age}</TableRowColumn>
+          <TableRowColumn>{data.employee.salary}</TableRowColumn>
+          <TableRowColumn>{data.type}</TableRowColumn>
         </TableRow>
       )
     })
     return list
-  }
-
-  handleRowSelection = (row) => {
-    this.setState({
-      selectedRow: this.props.list[row],
-      openPopUp: true
-    })
-  }
-
-  closePopUp = () => {
-    this.setState({
-      openPopUp: false
-    })
   }
 
   changeAvailability = (e, value) => {
@@ -67,7 +54,7 @@ class EmployeeList extends React.Component {
 
       return (
         <div id="enclosingDiv">
-        <Table onRowSelection={this.handleRowSelection}>
+        <Table>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Name</TableHeaderColumn>
@@ -84,39 +71,6 @@ class EmployeeList extends React.Component {
             }
           </TableBody>
         </Table>
-
-        <Dialog
-          title="Work Space Information"
-          actions={actions}
-          modal={false}
-          open={this.state.openPopUp}
-          onRequestClose={this.closePopUp}
-        >
-          <List>
-            <ListItem
-              primaryText="Monthly Rating"
-              secondaryText={this.state.selectedRow != null ? "Rs " + this.state.selectedRow.monthly : "Rate Unavailable"}
-            />
-            <ListItem
-              primaryText="Daily Rates"
-              secondaryText={this.state.selectedRow != null ? "Rs " +  this.state.selectedRow.daily : "Rate Unavailable"}
-            />
-            <ListItem
-              primaryText="Hourly Rates"
-              secondaryText={this.state.selectedRow != null ? "Rs " + this.state.selectedRow.hourly : "Rate Unavailable"}
-            />
-          </List>
-          <Toggle
-            label="Toggle to change availability"
-            defaultToggled={true}
-            onToggle={this.changeAvailability}
-          />
-          {
-            this.props.loading?
-            "Loading..."
-            : null
-          }
-        </Dialog>
       </div>
       );
    }

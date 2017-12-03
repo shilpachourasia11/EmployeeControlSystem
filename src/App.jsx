@@ -12,6 +12,8 @@ class App extends Component {
       <div>
         <Header/>
         <Home/>
+
+      
       </div>
     </MuiThemeProvider>
     );

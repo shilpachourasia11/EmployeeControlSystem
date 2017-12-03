@@ -10,19 +10,21 @@ import App from './App.jsx';
 import Login from './container/login/index.js'
 import {Provider} from 'react-redux'
 import store from './store'
-import {Router, Route ,IndexRoute, browserHistory} from 'react-router'
+import {Router, Route ,IndexRoute, browserHistory, Switch} from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { createBrowserHistory } from 'history';
+import { ConnectedRouter } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
+import AddEmployee from './container/AddEmployee'
 
-const history = syncHistoryWithStore(createBrowserHistory(), store);
+const history = syncHistoryWithStore(browserHistory, store)
 
 render((
   <Provider store={store}>
-      <Router history = {history}>
-      <div>
-      <Route path = "/login" component = {Login}/>
-      <Route path = "/" component = {App}/>
-      </div>
+    <Router history = {history}>
+      <Route path = "/" component = {App}>
+      <Route path = "/add_employee" component = {AddEmployee}/>
+      </Route>
     </Router>
   </Provider>
 ), document.getElementById('react-root'))
